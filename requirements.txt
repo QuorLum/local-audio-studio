@@ -1,0 +1,37 @@
+# local-audio-studio - runtime dependencies.   Python 3.10, 3.11 or 3.12 (Kokoro's front-end needs < 3.13).
+#
+# Easiest: run ./install.sh (Linux/macOS) or .\install.ps1 (Windows). They install the right PyTorch
+# build for your hardware first, then this file. By hand:
+#
+#   NVIDIA GPU (Linux/Windows):  pip install torch==2.7.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+#   CPU only (any OS):           pip install torch==2.7.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+#   macOS (Apple Silicon):       pip install torch==2.7.1 torchaudio==2.7.1
+#   then:                        pip install -r requirements.txt
+#
+# torch/torchaudio 2.7.1 are the versions Stability AI's stable-audio-3 package pins and tests against.
+torch==2.7.1
+torchaudio==2.7.1
+
+# --- shared -----------------------------------------------------------------------------------
+numpy>=2.2.6
+safetensors>=0.7.0
+huggingface-hub>=1.7.1
+transformers>=5.8.0
+sentencepiece>=0.2.0
+soundfile>=0.13.1
+tqdm>=4.67.3
+packaging>=26.0
+
+# --- speech: Kokoro-82M (Apache-2.0) ------------------------------------------------------------
+kokoro>=0.9.4
+misaki[en]>=0.9.4          # English G2P + espeak-ng library for other languages (espeakng-loader wheel)
+loguru
+
+# --- sound effects & music: official Stable Audio 3 inference code (MIT), pinned to a reviewed commit
+einops>=0.8.2
+einops-exts>=0.0.4
+stable-audio-3 @ git+https://github.com/Stability-AI/stable-audio-3@790793b89ddceea612be9ce42ff6830d18f6fa57
+
+# --- optional extras (uncomment for Japanese / Mandarin speech) --------------------------------
+# misaki[ja]>=0.9.4
+# misaki[zh]>=0.9.4

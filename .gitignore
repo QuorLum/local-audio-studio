@@ -1,0 +1,47 @@
+# --- model weights: never commit these (they are several GB) ---------------
+/models/
+*.safetensors
+*.pth
+*.pt
+*.ckpt
+*.gguf
+*.onnx
+*.tflite
+*.bin
+*.part
+
+# --- generated audio --------------------------------------------------------
+/output/
+/outputs/
+*.wav
+*.flac
+*.ogg
+*.mp3
+!tests/data/**
+
+# --- python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- editors / OS -------------------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- secrets ---------------------------------------------------------------------
+.env
+.env.*
+.hf_token

@@ -1,0 +1,5 @@
+Welcome to the channel.
+
+Today we are looking at how a small laptop can make the voiceover, the sound effects and the music for a whole video, without sending a single byte to the cloud.
+
+First, the voice. Then the rain on the window. And finally, a gentle piece of music to carry the story.

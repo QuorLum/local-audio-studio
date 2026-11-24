@@ -1,0 +1,43 @@
+local-audio-studio
+Copyright (c) 2026 local-audio-studio contributors
+The wrapper code in this repository is licensed under the MIT License (see LICENSE).
+
+This repository contains NO model weights. `scripts/setup_models.py` downloads them
+from their original publishers' repositories; each keeps its own license:
+
+  Component                         Publisher            License
+  --------------------------------  -------------------  ----------------------------------------
+  Kokoro-82M (speech model)         hexgrad              Apache License 2.0
+  kokoro / misaki (Python code)     hexgrad              Apache License 2.0
+  Stable Audio 3 Small SFX/Music    Stability AI         Stability AI Community License (below)
+  stable-audio-3 (inference code)   Stability AI         MIT License
+  T5Gemma-b-b-ul2 text encoder      Google               Gemma Terms of Use (below)
+  PyTorch                           PyTorch Foundation   BSD-3-Clause
+  transformers / huggingface_hub    Hugging Face         Apache License 2.0
+  espeak-ng (via espeakng-loader)   espeak-ng project    GPL-3.0 (separate shared library; not
+                                                         part of this repository)
+
+--------------------------------------------------------------------------------
+Stability AI notice (required by Section 4(a) of the Stability AI Community License)
+--------------------------------------------------------------------------------
+This Stability AI Model is licensed under the Stability AI Community License, Copyright (c) Stability AI Ltd. All Rights Reserved
+
+A copy of the agreement is in licenses/STABILITY_AI_COMMUNITY_LICENSE.md.
+Powered by Stability AI.
+
+Modifications: the files localaudio/assets/sa3_small_sfx_config.json and
+localaudio/assets/sa3_small_music_config.json are derived from Stability AI's
+`model_config.json` files for Stable Audio 3 Small SFX and Small Music. The `training`
+section was removed (it is not used for inference) and the text-encoder entry's
+`repo_id`/`subfolder` were replaced by `model_name` so that the encoder can be
+resolved to a local file at load time. The architecture sections are unchanged.
+
+--------------------------------------------------------------------------------
+Google Gemma notice
+--------------------------------------------------------------------------------
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+localaudio/assets/t5gemma_b_b_ul2_config.json is the unmodified `config.json` of
+google/t5gemma-b-b-ul2. The T5Gemma encoder weights that Stable Audio 3 uses as its text
+encoder are downloaded, not redistributed, by this project and remain subject to the
+Gemma Terms of Use, including its prohibited-use policy.

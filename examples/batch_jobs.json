@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "mode": "tts",
+      "text": "It was a quiet evening in the old town. Rain tapped on the windows of the corner cafe.",
+      "voice": "af_heart",
+      "output": "output/scene/narration.wav"
+    },
+    {
+      "mode": "sfx",
+      "prompt": "steady rain on a tin roof",
+      "duration": 60,
+      "loopable": true,
+      "output": "output/scene/rain_bed.wav"
+    },
+    {
+      "mode": "sfx",
+      "prompt": "a ceramic cup placed on a saucer, then a spoon stirring",
+      "duration": 4,
+      "seed": 7,
+      "output": "output/scene/cup.wav"
+    },
+    {
+      "mode": "music",
+      "prompt": "soft late-night jazz trio",
+      "duration": 60,
+      "bpm": 78,
+      "output": "output/scene/jazz_bed.wav"
+    }
+  ]
+}

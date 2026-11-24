@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-audio-studio"
+version = "0.1.0"
+description = "100% local, zero-cost text-to-speech, sound effects and music in one CLI/skill (Kokoro-82M + Stable Audio 3 Small). CPU or 4 GB GPU."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE", "licenses/*"]
+authors = [{ name = "local-audio-studio contributors" }]
+keywords = ["text-to-speech", "tts", "sound-effects", "foley", "music-generation", "stable-audio", "kokoro", "offline", "agent-skill"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Multimedia :: Sound/Audio :: Sound Synthesis",
+]
+dependencies = [
+    "torch==2.7.1",
+    "torchaudio==2.7.1",
+    "numpy>=2.2.6",
+    "safetensors>=0.7.0",
+    "huggingface-hub>=1.7.1",
+    "transformers>=5.8.0",
+    "sentencepiece>=0.2.0",
+    "soundfile>=0.13.1",
+    "tqdm>=4.67.3",
+    "packaging>=26.0",
+    "kokoro>=0.9.4",
+    "misaki[en]>=0.9.4",
+    "loguru",
+    "einops>=0.8.2",
+    "einops-exts>=0.0.4",
+    # Official Stable Audio 3 code (MIT), pinned to a reviewed commit. Needs git installed.
+    # (A direct URL is fine for pip/GitHub installs; PyPI would reject it.)
+    "stable-audio-3 @ git+https://github.com/Stability-AI/stable-audio-3@790793b89ddceea612be9ce42ff6830d18f6fa57",
+]
+
+[project.optional-dependencies]
+japanese = ["misaki[ja]>=0.9.4"]
+chinese = ["misaki[zh]>=0.9.4"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+local-audio = "localaudio.cli:main"
+local-audio-setup = "localaudio.installer:main"
+
+[tool.setuptools.packages.find]
+include = ["localaudio*"]
+
+[tool.setuptools.package-data]
+localaudio = ["assets/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning", "ignore::UserWarning"]
